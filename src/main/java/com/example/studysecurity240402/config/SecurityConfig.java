@@ -2,6 +2,7 @@ package com.example.studysecurity240402.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -33,11 +34,15 @@ public class SecurityConfig {
         );
 
         // 권한(규칙)이 없는 사용자가 접근하게 되면 자동으로 로그인 페이지로 리다이렉션 하게 설정
+        // 기존 formLogin 방식
         http.formLogin((auth)-> auth
                 .loginPage("/login") // <- 로그인 페이지로 이동 시키기
                 .loginProcessingUrl("/loginProc") // <- 프론트에서 로그인 데이터를 넘기면 security 가 받아 처리를 하게된다.
                 .permitAll()
         );
+
+        // formLogin -> httpBasicLogin
+        // http.httpBasic(Customizer.withDefaults());
 
         // 로그인을 하게 되면 csrf 라는 토큰이 필요한데 지금 과정에서는 disable 상태로 두고 개발함
         // http.csrf((auth) -> auth.disable());
