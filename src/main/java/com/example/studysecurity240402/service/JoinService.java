@@ -29,7 +29,7 @@ public class JoinService {
         data.setPassword(bCryptPasswordEncoder.encode(joinDTO.getPassword()));
         // BCrypt를 사용한 해쉬화된 password 를 넣기
 
-        data.setRole("ROLE_USER");
+        data.setRole("ROLE_ADMIN");
         // 회원 티입을 강제로 우리가 넣어준것
 
         userRepository.save(data);
