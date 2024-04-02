@@ -13,8 +13,9 @@ public class SecurityConfig {
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
-
+        // 클래스를 임폴트 해오기    메서드 명 사용
         return new BCryptPasswordEncoder();
+        // 새로운 객체로 return 하기
     }
 
     @Bean
