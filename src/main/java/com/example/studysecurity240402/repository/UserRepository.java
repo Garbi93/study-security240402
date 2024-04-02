@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 // JpaRepository 를 상속 받고                    DB와 연동되는 Entity, id의 타입
+
+    boolean existsByUsername(String username);
 }
