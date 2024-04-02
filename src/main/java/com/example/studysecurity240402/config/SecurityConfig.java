@@ -40,7 +40,7 @@ public class SecurityConfig {
         );
 
         // 로그인을 하게 되면 csrf 라는 토큰이 필요한데 지금 과정에서는 disable 상태로 두고 개발함
-        http.csrf((auth) -> auth.disable());
+        // http.csrf((auth) -> auth.disable());
 
         // 다중 로그인 설정
         http.sessionManagement((auth) -> auth

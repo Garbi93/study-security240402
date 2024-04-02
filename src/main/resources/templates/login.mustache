@@ -14,6 +14,8 @@ login page
 <form action="/loginProc" method="post" name="loginForm">
     <input id="username" type="text" name="username" placeholder="id"/>
     <input id="password" type="password" name="password" placeholder="password"/>
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+    <!-- 위의 코드를 집어 넣어 post 요청 코드에 같이 보낸다. -->
     <input type="submit" value="login"/>
 </form>
 
