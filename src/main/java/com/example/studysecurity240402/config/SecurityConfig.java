@@ -2,6 +2,8 @@ package com.example.studysecurity240402.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -17,6 +19,16 @@ public class SecurityConfig {
         // 클래스를 임폴트 해오기    메서드 명 사용
         return new BCryptPasswordEncoder();
         // 새로운 객체로 return 하기
+    }
+
+    // 계층 권한 설정
+    @Bean
+    public RoleHierarchy roleHierarchy() {
+        RoleHierarchyImpl hierarchy = new RoleHierarchyImpl();
+
+        hierarchy.setHierarchy("ROLE_C > ROLE_B > ROLE_A"); // 권한 설정 순위 셋팅
+
+        return hierarchy;
     }
 
     @Bean
